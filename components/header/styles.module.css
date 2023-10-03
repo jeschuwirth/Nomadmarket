@@ -1,0 +1,28 @@
+.header{
+    height: 6em;
+    min-width: 100%;
+    padding-right: 2em;
+
+    display: flex;
+    position: absolute;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header button{
+    background-color: #e54b04;
+    color: white;
+    padding: 1em;
+
+    border: none;
+    border-radius: 3em;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+}
+
+.header button:hover{
+    opacity: 0.6
+}
