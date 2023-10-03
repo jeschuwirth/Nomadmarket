@@ -1,4 +1,4 @@
-import styles from '@/styles/Home.module.css'
+import styles from './styles.module.css'
 import ReturnButton from '../../../components/returnbutton';
 import { useRouter } from "next/router"
 import { useQuery } from "react-query";
@@ -25,7 +25,27 @@ export default function Home() {
       {
         !product?
         <h2>producto no encontrado</h2>:
-        <p>El producto es {product.name}</p>
+        <div className={styles.container}>
+          <div className={styles.imagecontainer}>
+            <img src={product.image}/>
+          </div>
+          <div className={styles.information}>
+
+            <div className={styles.verticalcontainer}>
+              <p className={styles.name}>  {product.name}</p>
+              <p className={styles.price}> ${product.price}</p>
+              <p className={styles.sku}> SKU: {product.sku}</p>
+            </div>
+
+            <div className={styles.verticalcontainer}>
+              <div className={styles.horizontalcontainer}>
+                <p>Cantidad: </p>
+                <input type="number" min={0}></input>
+              </div>
+              <button>Agregar al carro</button>
+            </div>
+          </div>
+        </div>
       }
     </main>
   )

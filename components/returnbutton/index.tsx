@@ -6,7 +6,7 @@ export default function ReturnButton() {
     const router = useRouter();
     return (
         <div className={styles.returncontainer}>
-            <p onClick={ router.back }>Volver</p>
+            <p onClick={ () => router.push("/") }>Volver</p>
         </div>
     )
 }
