@@ -1,0 +1,10 @@
+.returncontainer {
+    width:100%;
+    padding-left: 2em;
+}
+  
+.returncontainer p {
+    font-size: large;
+    cursor: pointer;
+    text-decoration: underline;
+}

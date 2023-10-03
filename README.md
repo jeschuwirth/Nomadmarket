@@ -1,3 +1,13 @@
+## Supuestos y consideraciones
+
+-  No se muestra el SKU de los productos en la vista de catálogo por temas estéticos. Se consideró que mostrar la imagen, nombre y precio sería suficiente para demostrar el conocimiento de que también podría mostrar el SKU.
+
+- Se agregó un nuevo filtro para mostrar solamente aquellos productos con stock en el local seleccionado.
+
+- Las siguientes líneas del readme son autogeneradas y muestran cómo ejecutar el código.
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

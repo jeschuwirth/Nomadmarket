@@ -1,11 +1,12 @@
 .header{
     height: 6em;
     min-width: 100%;
-    padding-right: 2em;
+    padding-left: 5em;
+    padding-right: 5em;
 
     display: flex;
     position: absolute;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
 

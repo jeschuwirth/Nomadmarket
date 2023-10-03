@@ -20,12 +20,12 @@
   flex-direction: column;
   padding: 1rem;
   border-radius: 3px;
-  border: 0px solid transparent;
+  border: 2px solid black;
   gap: 0.5em;
 }
 
 .card:hover{
-  border: 5px solid #e54b04;
+  border: 7px solid black;
   padding: calc(1rem - 5px);
 }
 
@@ -34,15 +34,9 @@
   padding-left: 0.5em;
 }
 
-.card p {
-  font-size: large;
-  text-align: center;
-  padding-left: 0.5em;
-}
-
 .imagecontainer {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   display: grid;
   place-items: center;
 }
