@@ -50,3 +50,9 @@
 .card img {
   width: 100%;
 }
+
+.filterscontainer {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
+}

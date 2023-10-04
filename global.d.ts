@@ -3,7 +3,12 @@ type Product = {
     "name": string,
     "image": string,
     "price": number,
-    "stock": Array<stock>
+    "stock": {[key: string]: stock}
+}
+
+type CartItem = {
+    "quantity": int,
+    "product": Product
 }
 
 type Stock = {
@@ -12,6 +17,6 @@ type Stock = {
 }
 
 type Local = {
-    "id": number,
+    "id": string,
     "name": string
 }

@@ -1,11 +1,14 @@
 ## Supuestos y consideraciones
 
+- Al seleccionar un local se muestran solamente aquellos productos con stock en el local.
+
 -  No se muestra el SKU de los productos en la vista de catálogo por temas estéticos. Se consideró que mostrar la imagen, nombre y precio sería suficiente para demostrar el conocimiento de que también podría mostrar el SKU.
 
-- Se agregó un nuevo filtro para mostrar solamente aquellos productos con stock en el local seleccionado.
+- Se asume que todos los productos están disponibles en todos los locales. Los locales disponibles se consiguen del primer producto en el llamado a la API. Si el primer producto no tiene todos los locales entonces solamente se mostrarán aquellos donde el primer producto está disponible. (la forma correcta de arreglar este problema es tener otro endpoint del backend con todos los locales).
+
+- La información del producto en la vista de producto se consigue llamando al endpoint de la API y luego filtrando en ella aquel producto con el SKU correspondiente. (La forma correctar de implementar esto sería con otro endpoint del backend que permite hacer una request por un producto en específico).
 
 - Las siguientes líneas del readme son autogeneradas y muestran cómo ejecutar el código.
-
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).

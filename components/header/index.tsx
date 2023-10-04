@@ -1,12 +1,16 @@
 import styles from './styles.module.css'
 import { FaShoppingCart } from 'react-icons/Fa';
+import { useRouter } from "next/router"
 
 
 export default function Header(){
-    return (
-      <div className={styles.header}>
-        <h1>NomadMarket</h1>
-        <button>Ver carrito <FaShoppingCart/></button>
-      </div>
-    )
+  const router = useRouter();
+  return (
+    <div className={styles.header}>
+      <h1>NomadMarket</h1>
+      <button onClick = {() => {
+        router.push({"pathname": "/cart/"})
+      }}> Ver carrito <FaShoppingCart/> </button>
+    </div>
+  )
 }
