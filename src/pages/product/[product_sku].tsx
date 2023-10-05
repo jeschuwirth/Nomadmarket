@@ -6,10 +6,13 @@ import { useState, useEffect, useRef } from "react"
 
 import type { RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
+import { addCartItem, removeCartItem } from '../../features/cart/cartSlice'
 
 export default function Home() {
   const router = useRouter();
   const cart = useSelector((state: RootState) => state.cart)
+  const dispatch = useDispatch()
+
   const product_sku = router.query['product_sku'] as string
   const [product, setProduct] = useState<Product|undefined>(undefined);
   const quantityInput = useRef<HTMLInputElement>(null)
@@ -26,8 +29,21 @@ export default function Home() {
     }
   }, [catalog.data])
 
+  function addToCart(){
+    if (!quantityInput.current || !product  ) return;
+    if (quantityInput.current.value === "" || parseInt(quantityInput.current.value)  == 0){
+      return dispatch( removeCartItem( product.sku ) )
+    }
+    const cartItem = {
+      "quantity": parseInt(quantityInput.current.value),
+      "product": product
+    } as CartItem
+    dispatch( addCartItem( cartItem ) )
+    quantityInput.current.value = ""
+  }
+
   function handleQuantity(){
-    if (!product || !quantityInput.current || quantityInput.current.value == "") return;
+    if (!product || !quantityInput.current || quantityInput.current.value === "") return;
 
     if (cart.local && parseInt(quantityInput.current.value) > product.stock[cart.local.id].quantity){
       return quantityInput.current.value = product.stock[cart.local.id].quantity
@@ -65,7 +81,7 @@ export default function Home() {
                        ref = {quantityInput}
                        onChange = {handleQuantity}></input>
               </div>
-              <button>Agregar al carro</button>
+              <button onClick = {addToCart}>Agregar al carro</button>
             </div>
           </div>
         </div>
