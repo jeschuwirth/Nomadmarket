@@ -1,5 +1,6 @@
 import styles from './styles.module.css'
 import ReturnButton from '../../../components/returnbutton';
+import Counter from '../../../components/counter';
 import { useRouter } from "next/router"
 import { useQuery } from "react-query";
 import { useState, useEffect, useRef } from "react"
@@ -15,7 +16,7 @@ export default function Home() {
 
   const product_sku = router.query['product_sku'] as string
   const [product, setProduct] = useState<Product|undefined>(undefined);
-  const quantityInput = useRef<HTMLInputElement>(null)
+  const [quantity, setQuantity] = useState<number>(0);
 
 
   const catalog = useQuery<Array<Product>, Error>('catalog', () =>
@@ -30,29 +31,15 @@ export default function Home() {
   }, [catalog.data])
 
   function addToCart(){
-    if (!quantityInput.current || !product  ) return;
-    if (quantityInput.current.value === "" || parseInt(quantityInput.current.value)  == 0){
+    if (!product ) return;
+    if (quantity  == 0){
       return dispatch( removeCartItem( product.sku ) )
     }
     const cartItem = {
-      "quantity": parseInt(quantityInput.current.value),
+      "quantity": quantity,
       "product": product
     } as CartItem
     dispatch( addCartItem( cartItem ) )
-    quantityInput.current.value = ""
-  }
-
-  function handleQuantity(){
-    if (!product || !quantityInput.current || quantityInput.current.value === "") return;
-
-    if (cart.local && parseInt(quantityInput.current.value) > product.stock[cart.local.id].quantity){
-      return quantityInput.current.value = product.stock[cart.local.id].quantity
-    }
-
-    if (parseInt(quantityInput.current.value) < 0){
-      return quantityInput.current.value = "0"
-    }
-    quantityInput.current.value = parseInt(quantityInput.current.value).toString()
   }
 
   return (
@@ -77,9 +64,9 @@ export default function Home() {
             <div className={styles.verticalcontainer}>
               <div className={styles.horizontalcontainer}>
                 <p>Cantidad: </p>
-                <input type="number" 
-                       ref = {quantityInput}
-                       onChange = {handleQuantity}></input>
+                <Counter value = {quantity} 
+                         onChange = { setQuantity }
+                         max = {cart.local? product.stock[cart.local.id].quantity : null}/>
               </div>
               <button onClick = {addToCart}>Agregar al carro</button>
             </div>

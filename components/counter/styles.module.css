@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.5em;
+}
+
+.counterButton{
+    background-color: #e54b04;
+    color: white;
+    padding: 0.5em;
+
+    border: none;
+    border-radius: 3em;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+}
+
+.container button:hover{
+    opacity: 0.6
+}
