@@ -1,6 +1,5 @@
 import styles from './styles.module.css'
-import { FaPlus, FaMinus } from 'react-icons/Fa';
-import { Dispatch, SetStateAction } from "react";
+import { FaPlus, FaMinus } from 'react-icons/fa';
 
 
 type Props = {

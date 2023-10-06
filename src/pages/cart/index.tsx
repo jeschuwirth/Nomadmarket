@@ -2,7 +2,7 @@ import styles from './styles.module.css'
 import ReturnButton from '../../../components/returnbutton';
 import Counter from '../../../components/counter';
 import { useRouter } from "next/router"
-import { MdDelete } from 'react-icons/Md';
+import { MdDelete } from 'react-icons/md';
 
 import { useSelector, useDispatch } from 'react-redux'
 import type { RootState } from '../../store'

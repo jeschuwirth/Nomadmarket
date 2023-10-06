@@ -1,5 +1,5 @@
 import styles from './styles.module.css'
-import { FaShoppingCart } from 'react-icons/Fa';
+import { FaShoppingCart } from 'react-icons/fa';
 import { useRouter } from "next/router"
 
 
