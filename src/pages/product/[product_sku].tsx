@@ -28,12 +28,12 @@ export default function Home() {
     if( catalog.data && product_sku && product_sku !== "[product_sku]"){
       setProduct(catalog.data.find((p:Product)=> p.sku === product_sku))
     }
-  }, [catalog.data])
+  }, [catalog.data, product_sku])
 
   useEffect(()=>{
     if(!product || !(product.sku in cart.items)) return;
     setQuantity(cart.items[product.sku].quantity)
-  }, [product])
+  }, [product, cart.items])
 
   function addToCart(){
     if (!product ) return;

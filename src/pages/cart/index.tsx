@@ -33,8 +33,8 @@ export default function Cart() {
       {cart.local? <p>Compras del local {cart.local.name}</p> : <p>Compras sin local seleccionado</p>}
       <div className = {styles.cartcontainer}>
         {
-          Object.values(cart.items).map((ci:CartItem)=>
-          <div className = {styles.product}>
+          Object.values(cart.items).map((ci:CartItem, index:number)=>
+          <div className = {styles.product} key = {index}>
             <div className = {styles.horizontalcontainer}>
               <div className = {styles.productimage}>
                 <img src={ci.product.image}/>
