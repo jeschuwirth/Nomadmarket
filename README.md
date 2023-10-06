@@ -2,6 +2,8 @@
 
 - Al seleccionar un local se muestran solamente aquellos productos con stock en el local.
 
+- Al cambiar de local seleccionado se vacía el carro
+
 -  No se muestra el SKU de los productos en la vista de catálogo por temas estéticos. Se consideró que mostrar la imagen, nombre y precio sería suficiente para demostrar el conocimiento de que también podría mostrar el SKU.
 
 - Se asume que todos los productos están disponibles en todos los locales. Los locales disponibles se consiguen del primer producto en el llamado a la API. Si el primer producto no tiene todos los locales entonces solamente se mostrarán aquellos donde el primer producto está disponible. (la forma correcta de arreglar este problema es tener otro endpoint del backend con todos los locales).

@@ -9,6 +9,7 @@ import type { RootState } from '../../store'
 import { useSelector, useDispatch } from 'react-redux'
 import { addCartItem, removeCartItem } from '../../features/cart/cartSlice'
 
+
 export default function Home() {
   const router = useRouter();
   const cart = useSelector((state: RootState) => state.cart)
@@ -17,7 +18,6 @@ export default function Home() {
   const product_sku = router.query['product_sku'] as string
   const [product, setProduct] = useState<Product|undefined>(undefined);
   const [quantity, setQuantity] = useState<number>(0);
-
 
   const catalog = useQuery<Array<Product>, Error>('catalog', () =>
     fetch('https://xnoj0ialk2.execute-api.us-east-1.amazonaws.com/default/GetProductsTechTest', 
@@ -29,6 +29,11 @@ export default function Home() {
       setProduct(catalog.data.find((p:Product)=> p.sku === product_sku))
     }
   }, [catalog.data])
+
+  useEffect(()=>{
+    if(!product || !(product.sku in cart.items)) return;
+    setQuantity(cart.items[product.sku].quantity)
+  }, [product])
 
   function addToCart(){
     if (!product ) return;
